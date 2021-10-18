@@ -85,3 +85,9 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  agw_test_devcontainer:
+    uses: maxhbr/magma/.github/workflows/agw-workflow.yml@maxhbr/runAgwWorkflowForNewDevcontainers
+    needs: build_devcontainer_dockerfile
+    with:
+      devcontainer_image: ${{ needs.build_devcontainer_dockerfile.outputs.tags[0] }}
