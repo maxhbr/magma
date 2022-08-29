@@ -20,8 +20,9 @@ fi
 
 vagrant cloud auth login --token "$VAGRANT_CLOUD_TOKEN"
 vagrant cloud publish \
-    "${USER}/${BOX}"
+    --release \
+    --force \
+    "${USER}/${BOX}" \
     "$VERSION" \
     "$BOX_PROVIDER" \
-    "$BOX_FILE" \
-    --release
+    "$BOX_FILE"
